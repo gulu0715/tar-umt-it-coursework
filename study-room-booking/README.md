@@ -2,6 +2,10 @@
 
 PHP + MySQL web application for booking campus study rooms. This version is intentionally scoped to study-room operations and is designed to run locally with XAMPP and later on Amazon EC2 + RDS behind an Application Load Balancer.
 
+## Interface preview
+
+![Study Room Booking homepage](screenshots/homepage.png)
+
 ## Core features
 
 - User registration and secure login
@@ -38,9 +42,33 @@ PHP + MySQL web application for booking campus study rooms. This version is inte
 6. Open `http://localhost/StudyRoomBooking/`.
 7. Register a normal user first. An administrator can then create another admin from the Admin panel.
 
-## AWS target
+## AWS target architecture
 
-Internet → Application Load Balancer → EC2 Auto Scaling Group → RDS MySQL
+The diagram below shows the coursework deployment design: an ALB protected by AWS WAF distributes traffic to EC2 instances in an Auto Scaling Group across two Availability Zones. The application uses Amazon RDS for MySQL, while CloudWatch is used for monitoring.
+
+```mermaid
+flowchart TD
+    U[Internet users] --> WAF[AWS WAF associated with ALB]
+    WAF --> ALB[Application Load Balancer]
+    ALB --> ASG[EC2 Auto Scaling Group]
+    subgraph VPC[Amazon VPC]
+      subgraph AZ1[Availability Zone 1]
+        EC2A[EC2 instance]
+      end
+      subgraph AZ2[Availability Zone 2]
+        EC2B[EC2 instance]
+      end
+      DB[(Amazon RDS for MySQL)]
+    end
+    ASG --> EC2A
+    ASG --> EC2B
+    EC2A --> DB
+    EC2B --> DB
+    CW[Amazon CloudWatch] -. monitors .-> ALB
+    CW -. monitors .-> EC2A
+    CW -. monitors .-> EC2B
+    CW -. monitors .-> DB
+```
 
 Room images can use S3 so multiple EC2 instances share the same uploads. Sessions are stored in RDS so a user session remains available when the ALB routes requests to different EC2 instances. Use `/healthz.php` for the ALB health check.
 
