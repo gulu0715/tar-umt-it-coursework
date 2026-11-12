@@ -27,7 +27,7 @@ A console-based car rental management system developed for an Object-Oriented Pr
 
 ## My contribution
 
-This was a team coursework project with responsibilities allocated by module. **Fleet & Booking Management was my assigned module.** Although the other three modules were allocated to teammates, I handled most of the coding implementation across the overall system and also wrote much of the code in those modules. I am familiar with the implementation and interactions across all four modules.
+This was a team coursework project with responsibilities allocated by module. **Fleet & Booking Management was my assigned module.** Beyond that assigned module, I also implemented substantial portions of the code in **User & Account Management, Operations & Billing, and Reporting & Analytics**. I am familiar with the implementation and interactions across all four modules.
 
 The shared `ui/`, `common/` and `util/` packages support the four functional modules.
 
@@ -59,7 +59,7 @@ find src -name "*.java" -print0 | xargs -0 javac -encoding UTF-8 -d out
 java -cp out ui.Main
 ```
 
-On the first run, the application creates a default administrator account and loads sample records when the data files are empty. Runtime data files are created in the current working directory and are excluded from Git.
+On the first run, the application creates a default administrator account and loads sample records when the data files are empty. Runtime data files are created in the current working directory and are excluded from Git. The default account is intended only for local coursework demonstration; do not reuse its credentials in a real system.
 
 ## Data and security notes
 
