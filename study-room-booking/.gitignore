@@ -1,0 +1,9 @@
+# Local secrets
+.env
+
+# Runtime logs
+*.log
+
+# User-uploaded files (keep the placeholder file)
+/uploads/*
+!/uploads/index.html

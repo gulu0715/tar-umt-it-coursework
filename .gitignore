@@ -1,0 +1,20 @@
+# Python runtime files
+**/__pycache__/
+*.py[cod]
+/python-expense-tracker/database/expenses.txt
+
+# Java build output and runtime data
+/java-car-rental-system/out/
+/java-car-rental-system/*.txt
+/java-car-rental-system/*.csv
+/java-car-rental-system/**/*.class
+
+# Environment files and local secrets
+**/.env
+!**/.env.example
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

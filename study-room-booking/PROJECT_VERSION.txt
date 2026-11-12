@@ -1,0 +1,3 @@
+Study Room Booking System - Third Modification (Deep Optimization)
+
+Changes: CSRF protection, strict booking validation, hardened sessions, active-room/floor/facilities model, legacy library-feature removal, admin feedback unification, cleaned branding/docs, AWS multi-EC2 compatibility hardening, and migration script from Modification 2.
